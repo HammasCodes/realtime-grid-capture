@@ -236,7 +236,12 @@ export default function Grid() {
 
         <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-4 overflow-auto">
 
-          <div className="grid grid-cols-[repeat(20,minmax(0,1fr))] gap-1 min-w-[700px]">
+          <div
+  className="grid gap-1 min-w-[700px]"
+  style={{
+    gridTemplateColumns: "repeat(20, minmax(0, 1fr))",
+  }}
+>
             {tiles.map((tile) => (
               <motion.button
   key={tile.index}
