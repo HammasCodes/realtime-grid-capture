@@ -14,9 +14,16 @@ const server = http.createServer(app);
 const PORT = process.env.PORT || 5000;
 const GRID_SIZE = 400;
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://realtime-grid-capture.vercel.app",
+  "https://realtime-grid-capture-ob69b1eou-hammascodes-projects.vercel.app",
+];
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin: allowedOrigins,
+    methods: ["GET", "POST"],
   })
 );
 
@@ -24,7 +31,7 @@ app.use(express.json());
 
 const io = new Server(server, {
   cors: {
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin: allowedOrigins,
     methods: ["GET", "POST"],
   },
 });
