@@ -61,7 +61,9 @@ export default function Grid() {
   }, []);
 
   const fetchTiles = async () => {
-    const res = await axios.get("http://localhost:5000/api/tiles");
+    const res = await axios.get(
+  `${process.env.NEXT_PUBLIC_API_URL}/api/tiles`
+);
     setTiles(res.data);
   };
 
@@ -131,7 +133,7 @@ export default function Grid() {
   }
   const resetBoard = async () => {
   try {
-    const res = await axios.post("http://localhost:5000/api/reset");
+    const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/reset`);
 
     setTiles(res.data.tiles);
   } catch (error) {
